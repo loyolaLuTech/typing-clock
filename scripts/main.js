@@ -31,7 +31,7 @@ jQuery(document).ready(function(){
   var c = new Clock();
   window.setInterval(function(){
     c.update();
-    console.log(c.getTime());
+    // console.log(c.getTime());
   }, 1000);
 
   $(".element").typed({
