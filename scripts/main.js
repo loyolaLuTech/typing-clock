@@ -35,12 +35,12 @@ jQuery(document).ready(function(){
   }, 1000);
 
   $(".element").typed({
-    // strings: ["Hi, there!", greeting(), "My name is Pi and I'm a clock.","Do you happen to know what time is it? I seem to have forgotten.", "Oh I am just joking.", "It's " + c.time, dayOfWeek()],
-    strings: ["It's " + c.getTime()],
+    strings: ["Hi, there!", greeting(), "My name is Pi and I'm a clock.","Do you happen to know what time is it? I seem to have forgotten.", "Oh I am just joking.", "It's " + c.time, dayOfWeek()],
+    // strings: ["It's " + c.getTime()],
     typeSpeed: 25,
     backSpeed: 0,
     backDelay: 2000,
-    // startDelay: 5000,
+    startDelay: 5000,
     loop: 0,
     callback: function() {
     },
