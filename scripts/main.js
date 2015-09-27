@@ -27,10 +27,40 @@ $(function(){
   });
 });
 
-function getTime(){
-  var time;
+jQuery(document).ready(function(){
+  var c = new Clock();
+  window.setInterval(function(){
+    c.update();
+    console.log(c.getTime());
+  }, 1000);
+
+  $(".element").typed({
+    // strings: ["Hi, there!", greeting(), "My name is Pi and I'm a clock.","Do you happen to know what time is it? I seem to have forgotten.", "Oh I am just joking.", "It's " + c.time, dayOfWeek()],
+    strings: ["It's " + c.getTime()],
+    typeSpeed: 25,
+    backSpeed: 0,
+    backDelay: 2000,
+    // startDelay: 5000,
+    loop: 0,
+    callback: function() {
+    },
+  }).delay(500);
+
+});
+
+var globalTime;
+
+var Clock = function(){
+  this.update();
+}
+
+Clock.prototype.getTime = function() {
+  return this.time;
+};
+
+Clock.prototype.update = function() {
   var date = new Date();
-  // var second = date.getSeconds();
+  var second = date.getSeconds();
   var minute = date.getMinutes();
   var hour = date.getHours();
 
@@ -38,10 +68,8 @@ function getTime(){
     minute = '0' + String(minute);
   }
 
-  // time = String(hour) + ':' + String(minute) + ':' + String(second);
-  time = String(hour) + ':' + String(minute);
-
-  return time;
+  this.time = String(hour) + ':' + String(minute) + ':' + String(second);
+  // this.time = String(hour) + ':' + String(minute);
 }
 
 function greeting(){
@@ -85,17 +113,3 @@ function dayOfWeek(){
   }
   return phrase;
 }
-
-$(function(){
-    $(".element").typed({
-      strings: ["Hi, there!", greeting(), "My name is Pi and I'm a clock.","Do you happen to know what time is it? I seem to have forgotten.", "Oh I am just joking.", "It's " + getTime(), dayOfWeek()],
-      typeSpeed: 25,
-      backSpeed: 0,
-      backDelay: 2000,
-      startDelay: 5000,
-      loop: 0,
-      callback: function() {
-        getTime();
-      },
-    }).delay(500);
-});
