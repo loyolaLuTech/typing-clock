@@ -29,12 +29,7 @@ $(function(){
 
 jQuery(document).ready(function(){
   var c = new Clock();
-  window.setInterval(function(){
-    c.update();
-    // console.log(c.getTime());
-  }, 1000);
-
-  $(".element").typed({
+  var options = {
     strings: ["Hi, there!", c.greeting, "My name is Pi and I'm a clock.","Do you happen to know what time is it? I seem to have forgotten.", "Oh I am just joking.", "It's " + c.time, c.dayOfWeek],
     // strings: ["It's " + c.getTime()],
     typeSpeed: 25,
@@ -42,9 +37,15 @@ jQuery(document).ready(function(){
     backDelay: 2000,
     startDelay: 5000,
     loop: 0,
-    callback: function() {
-    },
-  }).delay(500);
+    callback: function() {}
+  };
+
+  window.setInterval(function(){
+    c.update();
+  }, 1000);
+
+  $(".element").typed(options).delay(500);
+
 
 });
 
